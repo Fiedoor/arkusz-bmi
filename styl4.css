@@ -1,0 +1,67 @@
+#baner {
+    background-color: #4b0082;
+    color: white;
+    text-align: center;
+    width: 75%;
+    height: 100px;
+    font-size: 150%;
+    margin: 0;
+}
+
+#logo {
+    width: 25%;
+    height: 100px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+#left {
+    width: 45%;
+    height: 300px;
+}
+
+#right {
+    width: 55%;
+    height: 300px;
+    text-align: center;
+}
+
+#bot {
+    background-color: #4b0082;
+    padding: 60px;
+}
+
+footer {
+    background-color: #4b0082;
+    color: white;
+    padding: 40px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffe4b5;
+}
+
+form {
+    padding: 40px;
+}
+
+table {
+    color: white;
+    text-align: center;
+    width: 90%;
+    border: 1px dashed yellow;
+}
+
+tr:hover {
+    background-color: #9370DB;
+    color: yellow;
+}
