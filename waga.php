@@ -26,29 +26,29 @@
                 Waga: <input type="number" name="waga"> <br>
                 Wzrost[cm]: <input type="number" name="wzrost"> <br>
                 <input type="submit" value="Licz BMI i zapisz wynik">
-                <?php
-                // error_reporting(0);
-                $waga = $_POST['waga'];
-                $wzrost = $_POST['wzrost'];
-                $conn = mysqli_connect('localhost', 'root', "", 'egzamin');
-                if ($waga > 0 or $wzrost > 0) {
-                    $bmi = $waga / pow($wzrost, 2);
-                    $bmi = floor($bmi * 10000);
-                    echo "<br> Twoja waga: " . $waga . " Twój wzrost: " . $wzrost . "<br>BMI wynosi: " . $bmi;
-                    if ($bmi <= 18) {
-                        $id = 1;
-                    } else if ($bmi > 18 and $bmi <= 25) {
-                        $id = 2;
-                    } else if ($bmi > 25 and $bmi <= 30) {
-                        $id = 3;
-                    } else if ($bmi > 30) {
-                        $id = 4;
-                    }
-                    $data = '20' . date('y-m-d');
-                    mysqli_query($conn, "INSERT INTO `wynik` (`bmi_id`,`data_pomiaru`,`wynik`) VALUES ('$id','$data','$bmi')");
-                }
-                ?>
             </form>
+            <?php
+            // error_reporting(0);
+            $waga = $_POST['waga'];
+            $wzrost = $_POST['wzrost'];
+            $conn = mysqli_connect('localhost', 'root', "", 'egzamin');
+            if ($waga > 0 or $wzrost > 0) {
+                $bmi = $waga / pow($wzrost, 2);
+                $bmi = $bmi * 10000;
+                echo "<br> Twoja waga: " . $waga . " Twój wzrost: " . $wzrost . "<br>BMI wynosi: " . $bmi;
+                if ($bmi <= 18) {
+                    $id = 1;
+                } else if ($bmi > 18 and $bmi <= 25) {
+                    $id = 2;
+                } else if ($bmi > 25 and $bmi <= 30) {
+                    $id = 3;
+                } else if ($bmi > 30) {
+                    $id = 4;
+                }
+                $data = '20' . date('y-m-d');
+                mysqli_query($conn, "INSERT INTO `wynik` (`bmi_id`,`data_pomiaru`,`wynik`) VALUES ('$id','$data','$bmi')");
+            }
+            ?>
         </div>
     </main>
     <div id="bot">
