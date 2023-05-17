@@ -31,22 +31,21 @@
                 $waga = $_POST['waga'];
                 $wzrost = $_POST['wzrost'];
                 $conn = mysqli_connect('localhost', 'root', "", 'egzamin');
-                if ($waga < 1 or $wzrost < 1) {
-
-                } else {
+                if ($waga > 0 or $wzrost > 0) {
                     $bmi = $waga / pow($wzrost, 2);
-                    $bmi = $bmi * 10000;
+                    $bmi = floor($bmi * 10000);
                     echo "<br> Twoja waga: " . $waga . " Twój wzrost: " . $wzrost . "<br>BMI wynosi: " . $bmi;
-                    if ($bmi < 18) {
+                    if ($bmi <= 18) {
                         $id = 1;
-                    } else if ($bmi > 19 and $bmi < 25) {
+                    } else if ($bmi > 18 and $bmi <= 25) {
                         $id = 2;
-                    } else if ($bmi > 26 and $bmi < 30) {
+                    } else if ($bmi > 25 and $bmi <= 30) {
                         $id = 3;
-                    } else {
+                    } else if ($bmi > 30) {
                         $id = 4;
                     }
-                    mysqli_query($conn,"INSERT INTO wyniki (`bmi_id`,`data_pomiaru`,`wynik`) VALUES ('$id',"",'$bmi'");
+                    $data = '20' . date('y-m-d');
+                    mysqli_query($conn, "INSERT INTO `wynik` (`bmi_id`,`data_pomiaru`,`wynik`) VALUES ('$id','$data','$bmi')");
                 }
                 ?>
             </form>
@@ -60,7 +59,14 @@
                 <th>zaczyna się od..</th>
             </tr>
             <?php
-            //s2
+            $res = mysqli_query($conn, "SELECT `id`, `informacja`, `wart_min` FROM bmi");
+            foreach ($res as $row) {
+                echo "<tr>";
+                foreach ($row as $r) {
+                    echo "<td>" . $r . "</td>";
+                }
+                echo "</tr>";
+            }
             ?>
         </table>
     </div>
