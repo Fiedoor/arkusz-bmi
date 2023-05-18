@@ -28,7 +28,7 @@
                 <input type="submit" value="Licz BMI i zapisz wynik">
             </form>
             <?php
-            // error_reporting(0);
+            error_reporting(0);
             $waga = $_POST['waga'];
             $wzrost = $_POST['wzrost'];
             $conn = mysqli_connect('localhost', 'root', "", 'egzamin');
