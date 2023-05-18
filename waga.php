@@ -45,7 +45,7 @@
                 } else if ($bmi > 30) {
                     $id = 4;
                 }
-                $data = '20' . date('y-m-d');
+                $data = date('Y-m-d');
                 mysqli_query($conn, "INSERT INTO `wynik` (`bmi_id`,`data_pomiaru`,`wynik`) VALUES ('$id','$data','$bmi')");
             }
             ?>
